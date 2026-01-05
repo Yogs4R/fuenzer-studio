@@ -1,20 +1,46 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# Fuenzer Studio - Landing Page
 
-# Run and deploy your AI Studio app
+![Project Status](https://img.shields.io/badge/status-development-orange)
+![Privacy](https://img.shields.io/badge/repo-private-red)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/6e38f457-74ab-48bd-844c-7391aca6336f/deploy-status)](https://app.netlify.com/projects/fuenzerapps/deploys)
 
-This contains everything you need to run your app locally.
+Repositori ini berisi kode sumber untuk landing page resmi **Fuenzer Studio**. Website ini berfungsi sebagai portofolio dan showcase untuk games yang dipublikasikan di Roblox.
 
-View your app in AI Studio: https://ai.studio/apps/drive/11uFBvDW5yjWy4cg7jnG9qdRqsexOszrC
+## 🛠️ Tech Stack
 
-## Run Locally
+Project ini dibangun menggunakan:
 
-**Prerequisites:**  Node.js
+* **Framework:** React 
+* **Language:** TypeScript
+* **Styling:** Tailwind CSS
+* **Icons:** Lucide React / Heroicons
+* **Deployment:** Netlify
 
+## 🚀 Cara Menjalankan (Local Development)
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+Ikuti langkah ini untuk menjalankan project di komputer lokal:
+
+1.  **Clone repositori:**
+    ```bash
+    git clone [https://github.com/Yogs4R/fuenzer-apps-web.git](https://github.com/Yogs4R/fuenzer-apps-web.git)
+    cd fuenzer-apps-web
+    ```
+
+2.  **Install dependencies:**
+    ```bash
+    npm install
+    # atau
+    yarn install
+    # atau
+    pnpm install
+    ```
+
+3.  **Jalankan server development:**
+    ```bash
+    npm run dev
+    ```
+
+4.  Buka [http://localhost:3000](http://localhost:3000) di browser Anda.
+
+## Website Link
+https://fuenzerstudio.netlify.app

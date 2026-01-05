@@ -1,5 +1,6 @@
 import React from 'react';
-import { Twitter, Youtube, Disc } from 'lucide-react';
+import { Twitter, Youtube, Mail } from 'lucide-react';
+import { Images } from '@/assets/images';
 
 interface FooterProps {
   onNavigate: (destination: string) => void;
@@ -14,7 +15,7 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
           <div className="w-full md:w-1/3 flex justify-center md:justify-start">
             <div className="flex items-center gap-3 cursor-pointer" onClick={() => onNavigate('home')}>
               <img
-                src="https://lh3.googleusercontent.com/aida-public/AB6AXuBDZi1zDns8QME8e1ytwvtE_0IiDYNkBGnVGEd8NwR8v0mldpAXAhaRtAnSptqCTWCApNRkCGN5qvt2cdwFaxn-Sc3kDP-VVaTYh5N-w48RSCtYGAtuqXuC3sW6OmH5OFR7noa6n3osUUmuzxBvMRih6oqRy36TKCAboDqtdyD54EfG66rqqEIOFOy8riKHqYVCUAuChv-xNzz5RI2OSZXaKWbIiiTtoxToa1jh8WbH8lOiHb8sRNdCkN_8d28TV0_j--ZpE4am28M"
+                src={Images.fuenzerStudio}
                 alt="Footer Logo"
                 className="h-8 w-8 rounded-lg"
               />
@@ -23,8 +24,12 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                   FUENZER STUDIO
                 </span>
                 <span className="block text-xs text-gray-500">
-                  © 2023 All Rights Reserved
+                  © {new Date().getFullYear()} Fuenzer Studio. All Rights Reserved.
                 </span>
+                <a href="mailto:dedekculesrbx@gmail.com" className="mt-1 flex items-center gap-2 text-sm text-gray-400 hover:text-primary transition-colors">
+                  <Mail className="w-4 h-4" />
+                  <span>dedekculesrbx@gmail.com</span>
+                </a>
               </div>
             </div>
           </div>
@@ -48,10 +53,10 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
           {/* Socials - Right aligned on desktop */}
           <div className="w-full md:w-1/3 flex justify-center md:justify-end gap-4">
             <a
-              href="#"
+              href="mailto:dedekculesrbx@gmail.com"
               className="w-10 h-10 rounded bg-surface-dark flex items-center justify-center text-white hover:bg-[#5865F2] hover:text-white transition-all transform hover:scale-110"
             >
-              <Disc className="w-5 h-5" />
+              <Mail className="w-5 h-5" />
             </a>
             <a
               href="#"

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Menu, X } from 'lucide-react';
 import { NAV_LINKS } from '../constants';
+import { Images } from '@/assets/images';
 
 interface NavbarProps {
   onNavigate: (destination: string) => void;
@@ -23,7 +24,7 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate }) => {
           {/* Logo Section - Left */}
           <div className="flex-shrink-0 flex items-center gap-3 z-20 cursor-pointer" onClick={() => onNavigate('home')}>
             <img
-              src="https://lh3.googleusercontent.com/aida-public/AB6AXuBDZi1zDns8QME8e1ytwvtE_0IiDYNkBGnVGEd8NwR8v0mldpAXAhaRtAnSptqCTWCApNRkCGN5qvt2cdwFaxn-Sc3kDP-VVaTYh5N-w48RSCtYGAtuqXuC3sW6OmH5OFR7noa6n3osUUmuzxBvMRih6oqRy36TKCAboDqtdyD54EfG66rqqEIOFOy8riKHqYVCUAuChv-xNzz5RI2OSZXaKWbIiiTtoxToa1jh8WbH8lOiHb8sRNdCkN_8d28TV0_j--ZpE4am28M"
+              src={Images.fuenzerStudio}
               alt="Fuenzer Studio Logo"
               className="h-10 w-10 rounded-lg"
             />
@@ -55,7 +56,7 @@ const Navbar: React.FC<NavbarProps> = ({ onNavigate }) => {
           {/* Right Action Buttons - Right */}
           <div className="hidden md:flex items-center gap-4 z-20 flex-shrink-0">
             <a
-              href="#"
+              href="https://www.roblox.com/share/g/32462874"
               className="clip-hex-button bg-gradient-to-r from-accent-gradient-start to-accent-gradient-end text-white px-6 py-2.5 font-bold tracking-wide hover:shadow-[0_0_20px_rgba(255,69,0,0.5)] transition-all transform hover:-translate-y-0.5 whitespace-nowrap"
             >
               JOIN GROUP

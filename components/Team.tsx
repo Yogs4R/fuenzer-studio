@@ -29,7 +29,7 @@ const Team: React.FC = () => {
               </div>
               <div className="text-center sm:text-left">
                 <h3 className="text-xl font-display font-bold text-white group-hover:text-primary transition-colors">
-                  {member.name} <span className="text-gray-400">{member.handle}</span>
+                  {member.name}
                 </h3>
                 <p className="text-primary font-bold text-xs uppercase tracking-wider mb-2">
                   {member.role}

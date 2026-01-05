@@ -6,7 +6,7 @@ export interface Project {
   visits: string;
   likes: string;
   favs: string;
-  status: 'Full Release' | 'Beta Phase' | 'Alpha' | 'In Development' | 'Live';
+  status: 'Full Release' | 'Beta Phase' | 'Alpha' | 'In Development';
   badge?: {
     text: string;
     colorClass: string;
@@ -18,7 +18,6 @@ export interface Project {
 export interface TeamMember {
   id: string;
   name: string;
-  handle: string;
   role: string;
   description: string;
   imageUrl: string;

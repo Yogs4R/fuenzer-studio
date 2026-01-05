@@ -1,4 +1,5 @@
 import { Project, TeamMember, StatItem } from './types';
+import { Images } from '@/assets/images';
 
 export const NAV_LINKS = [
   { name: 'Home', href: '#home' },
@@ -71,21 +72,19 @@ export const PROJECTS: Project[] = [
 
 export const TEAM_MEMBERS: TeamMember[] = [
   {
-    id: 'alex',
-    name: 'Alex',
-    handle: "'Systems'",
+    id: 'dedek_cules',
+    name: 'dedek_cules',
     role: 'Lead Developer',
-    description: 'Expert in Lua scripting and game architecture. Keeping the servers running since 2020.',
-    imageUrl: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDyX7qV9k99Klwu6C4B4I_6zqKnVU1TNCNOHbV6KFfBvmisREO4rSgCOLs4CQp-xxSqIbEI4HaWxf40oRZqjwjUGW1gFusjeDXq1it3a1rMn19rcsN5itIfHUyZIIUkwvFzV5IDNKvimKHVG9eOQVyfqkEo_ZP3TUHM36Lq0jgUpJPBOR-asLN3k-LZiiaeWpA1xiHn8SgUPsayGXkJiE9ZmTK-whLNZfgsmuD0kXI8lzlPQLo-67UIqcAvcKodREG4Nx-vC8Caq2I',
-    profileLink: '#alex-profile',
+    description: 'Scripter, Builder, UI/UX.',
+    imageUrl: Images.decul,
+    profileLink: 'https://www.roblox.com/id/users/2253933194/profile',
   },
   {
-    id: 'sarah',
-    name: 'Sarah',
-    handle: "'Voxel'",
-    role: 'Creative Director',
-    description: 'Building immersive worlds and crafting unique visual styles for every experience.',
-    imageUrl: 'https://lh3.googleusercontent.com/aida-public/AB6AXuDY0Y3_V32HF41QSdDFnhMh5D800AIGmlaUcnH-GLGCYWdiLu2lzb1wMRbl7ORyzJg990veDI9oZNPnZutnA9goQGOkJh2Bwz6LpUsW4KzAlVKewjZIf-N3antLTEfevEoZsFRIai9uopmATFD6meUr_tLqvtVUPJQ7nAWrPiJXEZHIkgc_Ugx5Wkmuq8QPQj541g-AcyaguTD4VJ_cgCJInw4Ff3wZhj_32lkTjUekBiibAsErSQuIF2Yz9_0xHWjWkhmFDpdfqN4',
-    profileLink: '#sarah-profile',
+    id: 'dedek_madrid',
+    name: 'dedek_madrid',
+    role: 'C0-lead Developer',
+    description: '3D Modeling, Texturing, Admin.',
+    imageUrl: Images.demit,
+    profileLink: 'https://www.roblox.com/id/users/2681062449/profile',
   },
 ];

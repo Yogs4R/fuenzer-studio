@@ -1,10 +1,10 @@
 import React from 'react';
-import { Users } from 'lucide-react';
+import { FaXTwitter as Twitter } from 'react-icons/fa6'; 
 import { STATS } from '../constants';
 
 const Hero: React.FC = () => {
   return (
-    <section id="home" className="relative min-h-screen flex flex-col justify-center overflow-hidden pt-20">
+    <section id="home" className="relative min-h-screen flex flex-col justify-center overflow-hidden pt-40 md:pt-48">
       <div className="absolute inset-0 bg-hex-pattern opacity-50 z-0 pointer-events-none"></div>
       <div className="absolute inset-0 bg-hero-glow z-0 pointer-events-none"></div>
       <div className="absolute top-1/4 -left-20 w-96 h-96 bg-primary opacity-20 blur-[100px] rounded-full z-0"></div>
@@ -16,20 +16,20 @@ const Hero: React.FC = () => {
           <span className="text-gradient">FUENZER</span>
         </h1>
         <p className="mt-4 max-w-2xl mx-auto text-xl md:text-2xl text-gray-400 font-light tracking-wide">
-          Creating Immersive <span className="text-primary font-bold">Roblox</span> Experiences
+          Everything is an idea. Imagination to <span className="text-primary font-bold">Roblox</span> Experiences
         </p>
-        <div className="mt-10 flex flex-col sm:flex-row justify-center items-center gap-6">
+        <div className="mt-10 mb-12 md:mb-24 flex flex-col sm:flex-row justify-center items-center gap-6">
           <a
-            href="#games"
+            href="https://www.roblox.com/id/users/2253933194/profile#!#creations"
             className="clip-hex-button bg-gradient-to-r from-accent-gradient-start to-accent-gradient-end text-white px-8 py-4 text-lg font-bold tracking-wider hover:shadow-[0_0_30px_rgba(255,69,0,0.6)] transition-all transform hover:scale-105 w-full sm:w-auto text-center"
           >
             PLAY NOW
           </a>
           <a
-            href="#discord"
+            href="https://x.com/FuenzerStudio?t=_Xf5iDCIpu6VEDOmy8u9kg&s=09"
             className="rounded-full bg-black hover:bg-gray-900 text-white px-8 py-4 text-lg font-bold tracking-wider transition-all transform hover:scale-105 flex items-center justify-center gap-2 w-full sm:w-auto shadow-lg shadow-black/20 border border-gray-800"
           >
-            <Users className="w-5 h-5 fill-current" /> COMMUNITY
+            <Twitter size={20} /> COMMUNITY
           </a>
         </div>
       </div>

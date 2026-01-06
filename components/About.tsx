@@ -12,14 +12,14 @@ const About: React.FC = () => {
             </h2>
             <div className="space-y-6 text-gray-400 text-lg leading-relaxed">
               <p>
-                Founded in 2020, Fuenzer Studio is dedicated to pushing the boundaries of what's
-                possible on Roblox. We are a team of passionate developers, artists, and
-                storytellers building worlds that millions of players call home.
+                Founded in 2023, Fuenzer Studio is a Roblox developer dedicated to creating new experiences, not brain-rotating games. 
+                Led by <span className="font-semibold">Ridwan Yoga Suryantara</span>, a solo developer, 
+                I'm currently the only one at Fuenzer Studio.
               </p>
               <p>
-                Our mission is to create immersive, high-quality experiences that bring communities
-                together. Whether it's exploring vast RPG worlds or competing in high-stakes
-                simulations, we craft every detail with the player in mind.
+                Our mission is to create immersive, high-quality experiences that bring communities together.  
+                Whether it's exploring the Mosque, Heaven or Hell, finding out about Roblox items for the latest event, 
+                or learning about the history of Roblox, we make the games as detailed as possible.
               </p>
             </div>
             <div className="mt-8 flex flex-wrap gap-4">

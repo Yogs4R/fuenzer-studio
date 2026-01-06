@@ -10,7 +10,7 @@ const Team: React.FC = () => {
             OUR <span className="text-gradient">TEAM</span>
           </h2>
           <div className="h-1 w-24 bg-gradient-to-r from-accent-gradient-start to-accent-gradient-end mx-auto"></div>
-          <p className="mt-4 text-gray-400">The minds behind the magic</p>
+          <p className="mt-4 text-gray-400">Meet the developer behind Fuenzer Studio</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-4xl mx-auto">

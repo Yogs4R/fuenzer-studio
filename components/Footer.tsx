@@ -1,5 +1,7 @@
 import React from 'react';
-import { Twitter, Youtube, Mail } from 'lucide-react';
+import { Mail } from 'lucide-react';
+import { FaYoutube as Youtube } from 'react-icons/fa';
+import { FaXTwitter as Twitter } from 'react-icons/fa6'; 
 import { Images } from '@/assets/images';
 
 interface FooterProps {
@@ -26,10 +28,6 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
                 <span className="block text-xs text-gray-500">
                   © {new Date().getFullYear()} Fuenzer Studio. All Rights Reserved.
                 </span>
-                <a href="mailto:dedekculesrbx@gmail.com" className="mt-1 flex items-center gap-2 text-sm text-gray-400 hover:text-primary transition-colors">
-                  <Mail className="w-4 h-4" />
-                  <span>dedekculesrbx@gmail.com</span>
-                </a>
               </div>
             </div>
           </div>
@@ -59,16 +57,16 @@ const Footer: React.FC<FooterProps> = ({ onNavigate }) => {
               <Mail className="w-5 h-5" />
             </a>
             <a
-              href="#"
+              href="https://youtube.com/@fuenzerstudio?si=2s_5EFd6NmdX_kbP"
               className="w-10 h-10 rounded bg-surface-dark flex items-center justify-center text-white hover:bg-[#EA4335] hover:text-white transition-all transform hover:scale-110"
             >
-              <Youtube className="w-5 h-5" />
+              <Youtube size={20} />
             </a>
             <a
-              href="#"
+              href="https://x.com/FuenzerStudio?t=_Xf5iDCIpu6VEDOmy8u9kg&s=09"
               className="w-10 h-10 rounded bg-surface-dark flex items-center justify-center text-white hover:bg-[#1DA1F2] hover:text-white transition-all transform hover:scale-110"
             >
-              <Twitter className="w-5 h-5" />
+              <Twitter size={20} />
             </a>
           </div>
         </div>

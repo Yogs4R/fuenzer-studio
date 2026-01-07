@@ -1,8 +1,66 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { FaXTwitter as Twitter } from 'react-icons/fa6'; 
 import { STATS } from '../constants';
+import { supabase } from '@/lib/supabaseClient';  
+
+const formatNumber = (num: number | string | null | undefined): string => {
+  if (num === null || num === undefined) return '0';
+
+  const n = Number(num);
+  if (isNaN(n)) return '0';
+
+  if (n >= 1000000000) return (n / 1000000000).toFixed(1).replace(/\.0$/, '') + 'B+';
+  if (n >= 1000000) return (n / 1000000).toFixed(1).replace(/\.0$/, '') + 'M+';
+  if (n >= 1000) return (n / 1000).toFixed(1).replace(/\.0$/, '') + 'K+';
+  return n.toString();
+}
 
 const Hero: React.FC = () => {
+  const [heroStats, setHeroStats] = useState(STATS);
+
+  useEffect(() => {
+    const fetchGlobalStats = async () => {
+      const { data, error } = await supabase
+        .from('project_stats')
+        .select('*');
+
+      if (error) {
+        console.error('Failed to fetch hero stats:', error.message);
+        return;
+      }
+
+      if (data) {
+        let totalVisits = 0;
+        let totalLikes = 0;
+        let totalGames = 0;
+        let totalMembers = 0;
+
+        data.forEach((item) => {
+          if (item.id === 'fuenzer_group') {
+            totalMembers = item.members || 0;
+          } else if (item.id.startsWith('game_')) {
+            totalVisits += item.visits || 0;
+            totalLikes += item.likes || 0;
+            totalGames += 1; 
+          }
+        });
+
+        const newStats = STATS.map((stat) => {
+          if (stat.label === 'Visits') return { ...stat, value: formatNumber(totalVisits) };
+          if (stat.label === 'Games') return { ...stat, value: totalGames.toString() };
+          if (stat.label === 'Likes') return { ...stat, value: formatNumber(totalLikes) };
+          if (stat.label === 'Members') return { ...stat, value: formatNumber(totalMembers) };
+          return stat;
+        });
+
+        setHeroStats(newStats);
+        console.log("Hero Stats Updated:", { totalVisits, totalLikes, totalGames, totalMembers });
+      }
+    };
+
+    fetchGlobalStats();
+  }, []);
+
   return (
     <section id="home" className="relative min-h-screen flex flex-col justify-center overflow-hidden pt-40 md:pt-48">
       <div className="absolute inset-0 bg-hex-pattern opacity-50 z-0 pointer-events-none"></div>
@@ -36,7 +94,7 @@ const Hero: React.FC = () => {
 
       <div className="relative z-10 w-full bg-transparent border-t border-gray-800/50 pt-10 pb-10 mt-auto">
         <div className="max-w-4xl mx-auto grid grid-cols-2 md:flex md:flex-row md:justify-center gap-8 md:gap-24 px-4">
-          {STATS.map((stat, index) => (
+          {heroStats.map((stat, index) => (
             <div
               key={index}
               className="text-center group hover:transform hover:-translate-y-2 transition-transform duration-300 cursor-default"

@@ -1,8 +1,74 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Eye, ThumbsUp, Heart, Play } from 'lucide-react';
 import { PROJECTS } from '../constants';
+import { supabase } from '@/lib/supabaseClient';
+
+const formatNumber = (num: number | string | null | undefined): string => {
+  if (num === null || num === undefined) return '0';
+
+  const n = Number(num);
+  if (isNaN(n)) return '0';
+
+  if (n >= 1000000000) return (n / 1000000000).toFixed(1).replace(/\.0$/, '') + 'B+';
+  if (n >= 1000000) return (n / 1000000).toFixed(1).replace(/\.0$/, '') + 'M+';
+  if (n >= 1000) return (n / 1000).toFixed(1).replace(/\.0$/, '') + 'K+';
+  return n.toString();
+}
 
 const Projects: React.FC = () => {
+  const [projectsData, setProjectsData] = useState(PROJECTS);
+
+  useEffect(() => {
+    const fetchLiveStats = async () => {
+      console.log("Start fetching live stats from Supabase...");
+
+      const { data, error } = await supabase
+        .from('project_stats')
+        .select('*');
+
+      if (error) {
+        console.error('Error Supabase:', error.message);
+        return;
+      }
+
+      console.log("Data received from Supabase:", data);
+
+      if (data) {
+        const updatedProjects = PROJECTS.map((project) => {
+          // Ambil ID dari URL
+          const match = project.playUrl?.match(/\/games\/(\d+)/);
+          const placeId = match ? match[1] : null;
+          
+          if (!placeId) return project;
+
+          // Buat ID Target yang dicari
+          const targetId = `game_${placeId}`;
+          
+          // Cari di data Supabase
+          const liveStat = data.find((item: any) => item.id === targetId);
+
+          // Logika Debugging: Cek apakah game ini ketemu datanya?
+          if (liveStat) {
+            console.log(`Successfully updated for ${project.title}:`, liveStat);
+            return {
+              ...project,
+              visits: formatNumber(liveStat.visits),
+              likes: formatNumber(liveStat.likes),
+              favs: formatNumber(liveStat.favorites),
+            };
+          } else {
+            console.warn(`Data not found in DB for ID: ${targetId} (${project.title})`);
+            return project;
+          }
+        });
+
+        setProjectsData(updatedProjects);
+      }
+    };
+
+    fetchLiveStats();
+  }, []);
+  
   return (
     <section id="games" className="py-24 bg-[#050505] relative">
       <div className="absolute inset-0 bg-hex-pattern opacity-30 pointer-events-none"></div>
@@ -12,11 +78,11 @@ const Projects: React.FC = () => {
             OUR <span className="text-gradient">PROJECTS</span>
           </h2>
           <div className="h-1 w-24 bg-gradient-to-r from-accent-gradient-start to-accent-gradient-end mx-auto"></div>
-          <p className="mt-4 text-gray-400">Explore our latest immersive worlds</p>
+          <p className="mt-4 text-gray-400">Explore our latest immersive experiences</p>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {PROJECTS.map((project) => (
+          {projectsData.map((project) => (
             <div
               key={project.id}
               className="group relative bg-surface-dark border border-gray-800 rounded-xl overflow-hidden hover:border-primary/50 transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_0_30px_rgba(255,69,0,0.15)] flex flex-col h-full"

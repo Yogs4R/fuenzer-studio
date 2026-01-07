@@ -6,6 +6,7 @@ import leakedItems from './leaked_items_image.png';
 import talkToDavid from './talk_to_david_image.png';
 import boxBrawlers from './box_brawlers_image.png';
 import heavenOrHell from './heaven_or_hell_image.png';
+import underDevelopment from './under_development_image.jpg';
 
 export const Images = {
     decul,
@@ -16,4 +17,5 @@ export const Images = {
     talkToDavid,
     boxBrawlers,
     heavenOrHell,  
+    underDevelopment,
 }

@@ -20,7 +20,7 @@ const Projects: React.FC = () => {
 
   useEffect(() => {
     const fetchLiveStats = async () => {
-      console.log("Start fetching live stats from Supabase...");
+      // console.log("Start fetching live stats from Supabase..."); // Clean log for production
 
       const { data, error } = await supabase
         .from('project_stats')
@@ -31,25 +31,17 @@ const Projects: React.FC = () => {
         return;
       }
 
-      console.log("Data received from Supabase:", data);
-
       if (data) {
         const updatedProjects = PROJECTS.map((project) => {
-          // Ambil ID dari URL
           const match = project.playUrl?.match(/\/games\/(\d+)/);
           const placeId = match ? match[1] : null;
           
           if (!placeId) return project;
 
-          // Buat ID Target yang dicari
           const targetId = `game_${placeId}`;
-          
-          // Cari di data Supabase
           const liveStat = data.find((item: any) => item.id === targetId);
 
-          // Logika Debugging: Cek apakah game ini ketemu datanya?
           if (liveStat) {
-            console.log(`Successfully updated for ${project.title}:`, liveStat);
             return {
               ...project,
               visits: formatNumber(liveStat.visits),
@@ -57,7 +49,6 @@ const Projects: React.FC = () => {
               favs: formatNumber(liveStat.favorites),
             };
           } else {
-            console.warn(`Data not found in DB for ID: ${targetId} (${project.title})`);
             return project;
           }
         });
@@ -111,26 +102,30 @@ const Projects: React.FC = () => {
                 </p>
                 <div className="flex justify-between items-center text-center mb-4 pt-4 border-t border-gray-800/50 gap-4">
                   <div className="flex-1">
-                    <div className="flex items-center justify-center gap-2 text-gray-500 text-xs uppercase font-bold mb-1">
-                      <Eye className="w-4 h-4 text-primary" /> Visits
+                    {/* FIX 1: Ubah text-gray-500 ke text-gray-400 untuk kontras */}
+                    <div className="flex items-center justify-center gap-2 text-gray-400 text-xs uppercase font-bold mb-1">
+                      <Eye className="w-4 h-4 text-primary" aria-hidden="true" /> Visits
                     </div>
                     <div className="text-white font-display font-bold text-xl tracking-wide">{project.visits}</div>
                   </div>
                   <div className="flex-1 border-l border-gray-800">
-                    <div className="flex items-center justify-center gap-2 text-gray-500 text-xs uppercase font-bold mb-1">
-                      <ThumbsUp className="w-4 h-4 text-primary" /> Likes
+                    {/* FIX 2: Ubah text-gray-500 ke text-gray-400 */}
+                    <div className="flex items-center justify-center gap-2 text-gray-400 text-xs uppercase font-bold mb-1">
+                      <ThumbsUp className="w-4 h-4 text-primary" aria-hidden="true" /> Likes
                     </div>
                     <div className="text-white font-display font-bold text-xl tracking-wide">{project.likes}</div>
                   </div>
                   <div className="flex-1 border-l border-gray-800">
-                    <div className="flex items-center justify-center gap-2 text-gray-500 text-xs uppercase font-bold mb-1">
-                      <Heart className="w-4 h-4 text-primary" /> Favs
+                    {/* FIX 3: Ubah text-gray-500 ke text-gray-400 */}
+                    <div className="flex items-center justify-center gap-2 text-gray-400 text-xs uppercase font-bold mb-1">
+                      <Heart className="w-4 h-4 text-primary" aria-hidden="true" /> Favs
                     </div>
                     <div className="text-white font-display font-bold text-xl tracking-wide">{project.favs}</div>
                   </div>
                 </div>
                 <div className="mb-6 flex items-center justify-between">
-                  <span className="text-xs text-gray-500 font-bold uppercase">Status</span>
+                  {/* FIX 4: Ubah text-gray-500 ke text-gray-400 */}
+                  <span className="text-xs text-gray-400 font-bold uppercase">Status</span>
                   <span
                     className={`text-xs font-bold uppercase tracking-wider px-2 py-0.5 rounded border ${project.statusColorClass}`}
                   >
@@ -141,9 +136,11 @@ const Projects: React.FC = () => {
                   href={project.playUrl || '#'}
                   target="_blank"
                   rel="noopener noreferrer"
+                  // FIX 5: Tambahkan aria-label spesifik
+                  aria-label={`Play ${project.title} on Roblox now`}
                   className="w-full clip-hex-button bg-gray-800 text-white hover:bg-primary hover:text-white font-bold py-3 transition-colors flex items-center justify-center gap-2 cursor-pointer no-underline"
                 >
-                  <Play className="w-5 h-5 fill-current" /> PLAY NOW
+                  <Play className="w-5 h-5 fill-current" aria-hidden="true" /> PLAY NOW
                 </a>
               </div>
             </div>

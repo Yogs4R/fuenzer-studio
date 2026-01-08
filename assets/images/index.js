@@ -1,6 +1,6 @@
 import decul from './decul_profile.webp';
 import demit from './demit_profile.webp';
-import fuenzerStudio from './fuenzerStudio_logo.webp';
+import fuenzerStudio from './fuenzer_studio_logo.webp';
 import mosque from './mosque_image.webp';
 import leakedItems from './leaked_items_image.webp';
 import talkToDavid from './talk_to_david_image.webp';
